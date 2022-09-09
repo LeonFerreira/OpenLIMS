@@ -1,9 +1,16 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace OpenLims.Model
 {
     public class Usuario
     {
-        public int Id { get; set; }
+        [Key]
+        public Guid Id { get; set; }
+
+        // [Required(ErrorMessage = "Name field is required.")]
         public string Name { get; set; }
+
+        // [Required(ErrorMessage = "Username field is required.")]
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
@@ -17,7 +24,5 @@ namespace OpenLims.Model
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public DateTime DeletedAt { get; set; }
-
-
     }
 }
