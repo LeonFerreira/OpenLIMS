@@ -1,6 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using OpenLIMS.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+var connectionStringMysql = builder.Configuration.GetConnectionString("ConnectionMysql");
+builder.Services.AddDbContext<ApiDbContext>(x => x.UseMySql(
+        connectionStringMysql,
+        ServerVersion.Parse("8.0.30-0ubuntu0.20.04.2")
+)
+
+);
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
